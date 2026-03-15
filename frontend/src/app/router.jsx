@@ -26,6 +26,8 @@ import ModuleRoute from "../components/auth/ModuleRoute";
 import Warehouses from "../pages/settings/Warehouses";
 import InventorizationList from "../pages/inventorization/InventorizationList";
 import InventorizationDetail from "../pages/inventorization/InventorizationDetail";
+import TransferList from "../pages/transfer/TransferList";
+import TransferDetail from "../pages/transfer/TransferDetail";
 
 export default function Router() {
   return (
@@ -44,7 +46,8 @@ export default function Router() {
         {/* Accessible by admin + super_admin */}
         <Route index element={<Dashboard />} />
         {/* <Route path="/inventorization" element={<Inventorization />} /> */}
-        <Route path="/transfer" element={<Transfer />} />
+        {/* <Route path="/transfer-list" element={<Transfer />} />
+        <Route path="/transfer/:id" element={<Transfer />} /> */}
         <Route path="/receive" element={<Receive />} />
         <Route path="/sales" element={<Sales />} />
         <Route path="/report" element={<Report />} />
@@ -102,6 +105,22 @@ export default function Router() {
           element={
             <ModuleRoute module="inventorization">
               <InventorizationDetail />
+            </ModuleRoute>
+          }
+        />
+        <Route
+          path="/transfer-list"
+          element={
+            <ModuleRoute module="transfer">
+              <TransferList />
+            </ModuleRoute>
+          }
+        />
+        <Route
+          path="/transfer/:id"
+          element={
+            <ModuleRoute module="transfer">
+              <TransferDetail />
             </ModuleRoute>
           }
         />

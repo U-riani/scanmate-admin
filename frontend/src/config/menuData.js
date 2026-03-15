@@ -9,32 +9,32 @@ export const menu = [
   {
     name: "Inventorization",
     path: "/inventorization",
-    module: "dashboard",
+    module: "inventorization",
   },
   {
     name: "Transfer",
-    path: "/transfer",
-    module: "dashboard",
+    path: "/transfer-list",
+    module: "transfer",
   },
   {
     name: "Receive",
     path: "/receive",
-    module: "dashboard",
+    module: "receive",
   },
   {
     name: "Sales",
     path: "/sales",
-    module: "dashboard",
+    module: "sales",
   },
   {
     name: "Report",
     path: "/report",
-    module: "reports",
+    module: "report",
   },
   {
     name: "Users",
     path: "/users",
-    module: "pocket_users",
+    module: "users",
     children: [
       {
         name: "Website Users",

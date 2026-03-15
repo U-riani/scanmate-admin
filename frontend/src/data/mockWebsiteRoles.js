@@ -7,6 +7,8 @@ export const mockWebsiteRoles = [
     description: "Full system access",
     modules: {
       dashboard: true,
+      users: true,
+      transfer: true,
       website_users: true,
       website_roles: true,
       pocket_users: true,
@@ -23,6 +25,8 @@ export const mockWebsiteRoles = [
     description: "Operational admin",
     modules: {
       dashboard: true,
+      transfer: true,
+      users: true,
       website_users: false,
       website_roles: false,
       pocket_users: true,
