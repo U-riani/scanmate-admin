@@ -28,6 +28,8 @@ import InventorizationList from "../pages/inventorization/InventorizationList";
 import InventorizationDetail from "../pages/inventorization/InventorizationDetail";
 import TransferList from "../pages/transfer/TransferList";
 import TransferDetail from "../pages/transfer/TransferDetail";
+import PriceLists from "../pages/sales/PriceLists";
+import PriceUploadDetail from "../pages/sales/PriceUploadDetail";
 
 export default function Router() {
   return (
@@ -49,7 +51,7 @@ export default function Router() {
         {/* <Route path="/transfer-list" element={<Transfer />} />
         <Route path="/transfer/:id" element={<Transfer />} /> */}
         <Route path="/receive" element={<Receive />} />
-        <Route path="/sales" element={<Sales />} />
+        {/* <Route path="/sales" element={<Sales />} /> */}
         <Route path="/report" element={<Report />} />
         <Route path="/users" element={<Users />} />
         <Route path="/users/pocket-users" element={<PocketUsers />} />
@@ -66,6 +68,31 @@ export default function Router() {
             <RoleRoute roles={["super_admin"]}>
               <RolesPermissions />
             </RoleRoute>
+          }
+        />
+        <Route
+          path="/sales"
+          element={
+            <ModuleRoute module="sales">
+              <Sales />
+            </ModuleRoute>
+          }
+        />
+        <Route
+          path="/sales/price-lists"
+          element={
+            <ModuleRoute module="sales">
+              <PriceLists />
+            </ModuleRoute>
+          }
+        />
+
+        <Route
+          path="/sales/price-lists/:id"
+          element={
+            <ModuleRoute module="sales">
+              <PriceUploadDetail />
+            </ModuleRoute>
           }
         />
         <Route

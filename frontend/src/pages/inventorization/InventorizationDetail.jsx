@@ -13,6 +13,7 @@ import { useCreateRecount } from "../../queries/inventorizationRecountMutation";
 import { preloadLinesFromWarehouse } from "../../api/inventorizationLinesService";
 
 import StatusBadge from "../../components/documents/StatusBadge";
+import ImportInventorizationExcelModal from "../../components/inventorization/ImportInventorizationExcelModal";
 
 import { INVENTORIZATION_FLOW } from "../../config/inventorizationStatusFlow";
 
@@ -20,6 +21,7 @@ export default function InventorizationDetail() {
   const { id } = useParams();
 
   const [selectedLines, setSelectedLines] = useState([]);
+  const [importOpen, setImportOpen] = useState(false);
 
   const { data: docs = [] } = useInventorizations();
   const { data: warehouses = [] } = useWarehouses();
@@ -99,8 +101,18 @@ export default function InventorizationDetail() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-semibold">Inventorization #{doc.id}</h1>
-
+      <ImportInventorizationExcelModal
+        open={importOpen}
+        onClose={() => setImportOpen(false)}
+        documentId={doc.id}
+      />
+      <h1 className="text-2xl font-semibold">Inventorization #{doc.id}</h1>{" "}
+      <button
+        onClick={() => setImportOpen(true)}
+        className="bg-gray-700 text-white px-4 py-2 rounded text-sm"
+      >
+        Import Excel
+      </button>
       <div className="bg-white p-6 rounded shadow space-y-3">
         <div>
           <span className="text-gray-500">Name:</span> {doc.name}

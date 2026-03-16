@@ -25,6 +25,13 @@ export const menu = [
     name: "Sales",
     path: "/sales",
     module: "sales",
+    children: [
+      {
+        name: "Price Lists",
+        path: "/sales/price-lists",
+        module: "sales",
+      },
+    ],
   },
   {
     name: "Report",

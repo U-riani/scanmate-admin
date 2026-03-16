@@ -9,6 +9,7 @@ export const mockWebsiteRoles = [
       dashboard: true,
       users: true,
       transfer: true,
+      sales: true,
       website_users: true,
       website_roles: true,
       pocket_users: true,
@@ -26,6 +27,7 @@ export const mockWebsiteRoles = [
     modules: {
       dashboard: true,
       transfer: true,
+      sales: true,
       users: true,
       website_users: false,
       website_roles: false,

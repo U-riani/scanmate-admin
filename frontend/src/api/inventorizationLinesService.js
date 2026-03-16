@@ -51,3 +51,42 @@ export async function markLinesForRecount(lineIds) {
     resolve(true);
   });
 }
+
+
+export async function importInventorizationLines(documentId, rows) {
+  return new Promise((resolve) => {
+    const errors = [];
+    const prepared = [];
+
+    rows.forEach((row, index) => {
+      const barcode = String(row["Barcode"] ?? "").trim();
+
+      if (!barcode) {
+        errors.push({
+          row: index + 2,
+          reason: "Barcode missing",
+        });
+        return;
+      }
+
+      prepared.push({
+        id: Date.now() + index,
+        document_id: documentId,
+        barcode: barcode,
+        article_code: row["Article"] ?? "",
+        product_name: row["Product"] ?? "",
+        expected_qty: Number(row["Expected Qty"]) || 0,
+        counted_qty: null,
+      });
+    });
+
+    db.push(...prepared);
+
+    setTimeout(() => {
+      resolve({
+        imported: prepared.length,
+        errors,
+      });
+    }, 200);
+  });
+}
